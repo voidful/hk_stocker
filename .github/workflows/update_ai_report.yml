@@ -1,0 +1,162 @@
+name: HK AI Quant Trading Report v8.5
+
+on:
+  schedule:
+    # 每週一到五 UTC 08:30 執行（香港時間 16:30 收盤後）
+    - cron: '30 8 * * 1-5'
+    # 每月 1 日 UTC 10:00 跑月報
+    - cron: '0 10 1 * *'
+  workflow_dispatch:
+    inputs:
+      tp_atr:
+        description: 'ATR 停利倍數'
+        required: false
+        default: '3.0'
+      sl_atr:
+        description: 'ATR 停損倍數'
+        required: false
+        default: '3.0'
+      hold_days:
+        description: '最大持倉天數'
+        required: false
+        default: '20'
+      top_k:
+        description: '每日最多進場股票數'
+        required: false
+        default: '12'
+      days:
+        description: '回測天數'
+        required: false
+        default: '1200'
+      gap_filter:
+        description: '跳空過濾 ATR 倍數'
+        required: false
+        default: '0'
+
+# 防止多個 run 同時 push 造成 race condition
+concurrency:
+  group: ai-report-main
+  cancel-in-progress: false
+
+jobs:
+  generate-report:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0  # 完整 history，避免 rebase 問題
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run AI Quant Pipeline v8.5
+        if: github.event.schedule != '0 10 1 * *'
+        run: |
+          python ai_report.py \
+            --breadth-regime \
+            --tp-atr ${{ github.event.inputs.tp_atr || '3.0' }} \
+            --sl-atr ${{ github.event.inputs.sl_atr || '3.0' }} \
+            --hold-days ${{ github.event.inputs.hold_days || '20' }} \
+            --top-k ${{ github.event.inputs.top_k || '12' }} \
+            --rsi-weight 1.5 \
+            --corr-filter 0 \
+            --dd-pause-pct 0.10 \
+            --consec-loss-limit 3 \
+            --gap-filter ${{ github.event.inputs.gap_filter || '0' }} \
+            --days ${{ github.event.inputs.days || '1200' }}
+
+          python day_trade_report.py \
+            --days ${{ github.event.inputs.days || '1200' }}
+
+      - name: Paper Trading Tracker
+        if: github.event.schedule != '0 10 1 * *'
+        run: python paper_tracker.py
+
+      - name: Monthly Paper Trading Report
+        if: github.event.schedule == '0 10 1 * *'
+        run: python paper_trade.py monthly
+
+      - name: Cleanup old artifacts (keep last 180 days)
+        run: |
+          if [ -d "artifacts" ]; then
+            find artifacts/ -type f -mtime +180 -delete 2>/dev/null || true
+          fi
+
+      - name: Commit and push
+        run: |
+          git config --global user.email "voidful.stack@gmail.com"
+          git config --global user.name "Voidful"
+
+          git add stock_report.html day_trade_report.html day_trade_chart.png paper_trading.html paper_equity.json || true
+          git commit -m "📊 AI Report v8.5 + Paper Trading ($(date -u '+%Y-%m-%d'))" || echo "No changes"
+
+          # Rebase onto latest remote to prevent non-fast-forward rejection
+          git fetch origin main
+          git rebase origin/main
+
+          git push origin HEAD:main
+
+  # 每季第一週自動跑 sweep + Monte Carlo + Walk-Forward
+  quarterly-health-check:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'schedule'
+
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+          cache: 'pip'
+
+      - name: Check if quarterly (first week of Jan/Apr/Jul/Oct)
+        id: check
+        run: |
+          DAY=$(date -u '+%d')
+          MONTH=$(date -u '+%m')
+          if [ "$DAY" -le 7 ] && ([ "$MONTH" = "01" ] || [ "$MONTH" = "04" ] || [ "$MONTH" = "07" ] || [ "$MONTH" = "10" ]); then
+            echo "run=true" >> $GITHUB_OUTPUT
+          else
+            echo "run=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Install dependencies
+        if: steps.check.outputs.run == 'true'
+        run: pip install -r requirements.txt
+
+      - name: Quick Sweep
+        if: steps.check.outputs.run == 'true'
+        run: python sweep.py --quick --output csv
+
+      - name: Walk-Forward Validation
+        if: steps.check.outputs.run == 'true'
+        run: python walk_forward.py
+
+      - name: Monte Carlo Stress Test (Block Bootstrap)
+        if: steps.check.outputs.run == 'true'
+        run: |
+          LATEST_EQUITY=$(ls -t artifacts/equity_*.csv | head -1)
+          python monte_carlo.py --equity "$LATEST_EQUITY" --runs 2000 --block-size 5
+
+      - name: Upload quarterly report
+        if: steps.check.outputs.run == 'true'
+        run: |
+          git config --global user.email "voidful.stack@gmail.com"
+          git config --global user.name "Voidful"
+
+          git add factor_search_results.csv ablation_results.csv backtest_chart.png || true
+          git commit -m "🔄 Quarterly health check ($(date -u '+%Y-%m-%d'))" || echo "No changes"
+
+          # Rebase onto latest remote to prevent non-fast-forward rejection
+          git fetch origin main
+          git rebase origin/main
+
+          git push origin HEAD:main

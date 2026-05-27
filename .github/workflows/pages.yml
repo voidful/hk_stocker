@@ -1,0 +1,77 @@
+name: Deploy HK Master Strategy Page
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+  schedule:
+    # Hong Kong market close + buffer, Monday-Friday.
+    - cron: "45 8 * * 1-5"
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Generate reports
+        run: |
+          python master_strategy_report.py --days 1200
+          python benchmark_beater_report.py --days 1200
+          python day_trade_report.py --days 1200
+          python benchmark_beater_day_trade_report.py --days 1200
+
+      - name: Build static site
+        run: |
+          mkdir -p public
+          cp master_strategy_report.html public/index.html
+          cp master_strategy_report.html public/
+          cp master_strategy_chart.png public/
+          cp benchmark_beater_report.html public/
+          cp benchmark_beater_chart.png public/
+          cp day_trade_report.html public/
+          cp day_trade_chart.png public/
+          cp benchmark_beater_day_trade_report.html public/
+          cp benchmark_beater_day_trade_chart.png public/
+          cp README.md STRATEGY_GUIDE.md public/
+          if [ -d artifacts ]; then
+            mkdir -p public/artifacts
+            cp artifacts/master_metadata_*.json public/artifacts/ 2>/dev/null || true
+            cp artifacts/master_gate_*.json public/artifacts/ 2>/dev/null || true
+          fi
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HK Master Strategy 報告 — 2026-05-27</title>
+    <style>
+        * { box-sizing: border-box; }
+        body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; background:#0b0f14; color:#f5f5f7; line-height:1.55; }
+        .container { max-width:1320px; margin:0 auto; padding:28px 18px 56px; }
+        h1 { font-size:2rem; margin:0 0 8px; letter-spacing:0; }
+        h2 { margin-top:28px; color:#ffffff; border-bottom:1px solid #25313d; padding-bottom:8px; }
+        .subtitle,.section-note { color:#a8b3bd; }
+        .badge { display:inline-block; margin:4px 6px 4px 0; padding:5px 9px; border-radius:6px; background:#17212b; color:#dbe7f0; border:1px solid #25313d; font-size:.9rem; }
+        .stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:12px; margin:14px 0; }
+        .stat-card { background:#111820; border:1px solid #25313d; border-left:4px solid #007aff; border-radius:8px; padding:14px; min-height:86px; }
+        .stat-card.benchmark { border-left-color:#ff9500; }
+        .label { color:#98a6b3; font-size:.82rem; margin-bottom:6px; }
+        .value { font-size:1.55rem; font-weight:750; color:#f5f5f7; }
+        .value.small { font-size:1rem; line-height:1.4; }
+        table { width:100%; border-collapse:collapse; background:#111820; border:1px solid #25313d; border-radius:8px; overflow:hidden; margin-top:12px; }
+        th,td { padding:10px 12px; border-bottom:1px solid #25313d; text-align:left; vertical-align:top; }
+        th { color:#9fb0bf; background:#17212b; font-size:.85rem; }
+        td { color:#edf5fb; }
+        img { width:100%; max-width:100%; border-radius:8px; border:1px solid #25313d; background:#fff; }
+        .grid-2 { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:16px; }
+        .disclaimer { margin-top:28px; color:#a8b3bd; background:#111820; border:1px solid #25313d; border-radius:8px; padding:14px; font-size:.92rem; }
+        @media (max-width:800px) { .container { padding:20px 10px 44px; } .grid-2 { grid-template-columns:1fr; } table { font-size:.86rem; } th,td { padding:8px; } .value { font-size:1.25rem; } }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>🚀 HK Master Strategy 報告</h1>
+    <p class="subtitle">
+        報表日期：2026-05-27 ｜ 下一交易日：2026-05-28
+        <br>
+        <span class="badge">Gate: <b style="color:#00ff00;">PASS</b></span>
+        <span class="badge">Core: Benchmark Beater v1.1</span>
+        <span class="badge">Overlay: Day Trade v1.1 × 8.14</span>
+        <span class="badge">Swing Universe-50</span>
+        <span class="badge">Day Universe-35</span>
+    </p>
+
+    <h2>績效總覽</h2>
+    <div class="stats">
+        <div class="stat-card"><div class="label">主策略總報酬率</div><div class="value" style="color:#00ff00;">+204.2%</div></div>
+        <div class="stat-card"><div class="label">年化報酬率</div><div class="value" style="color:#00ff00;">+45.7%</div></div>
+        <div class="stat-card"><div class="label">Sharpe Ratio</div><div class="value" style="color:#00ff00;">1.67</div></div>
+        <div class="stat-card"><div class="label">最大回撤</div><div class="value" style="color:#ffab00;">-16.5%</div></div>
+        <div class="stat-card"><div class="label">Calmar</div><div class="value">2.77</div></div>
+        <div class="stat-card"><div class="label">總交易數</div><div class="value">776</div></div>
+        <div class="stat-card"><div class="label">勝率</div><div class="value">56.8%</div></div>
+        <div class="stat-card"><div class="label">Profit Factor</div><div class="value">1.48</div></div>
+    </div>
+
+    <h2>子策略貢獻</h2>
+    <div class="stats">
+        <div class="stat-card"><div class="label">Swing Core 年化</div><div class="value">+31.2%</div></div>
+        <div class="stat-card"><div class="label">Swing Core Sharpe</div><div class="value">1.26</div></div>
+        <div class="stat-card"><div class="label">Day Trade 年化</div><div class="value">+3.0%</div></div>
+        <div class="stat-card"><div class="label">Day Trade Sharpe</div><div class="value">1.07</div></div>
+    </div>
+
+    <h2>Benchmark Gate</h2>
+    <p class="section-note">Gate 要求主策略在共存期間同時勝過 benchmark 的總報酬、年化報酬與 Sharpe。</p>
+    
+        <div class="stats">
+            <div class="stat-card benchmark"><div class="label">2800.HK 區間</div><div class="value small">2023-05-12<br>2026-05-27</div></div>
+            <div class="stat-card benchmark"><div class="label">2800.HK 總報酬</div><div class="value">+44.0%</div></div>
+            <div class="stat-card benchmark"><div class="label">2800.HK 年化</div><div class="value">+13.1%</div></div>
+            <div class="stat-card benchmark"><div class="label">2800.HK Sharpe</div><div class="value">0.64</div></div>
+            <div class="stat-card" style="border-left-color:#00ff00"><div class="label">主策略總超額 vs 2800.HK</div><div class="value" style="color:#00ff00">+147.2%</div></div>
+            <div class="stat-card" style="border-left-color:#00ff00"><div class="label">主策略年化 alpha vs 2800.HK</div><div class="value" style="color:#00ff00">+30.5%</div></div>
+        </div>
+
+        <div class="stats">
+            <div class="stat-card benchmark"><div class="label">2828.HK 區間</div><div class="value small">2024-04-24<br>2026-05-27</div></div>
+            <div class="stat-card benchmark"><div class="label">2828.HK 總報酬</div><div class="value">+47.4%</div></div>
+            <div class="stat-card benchmark"><div class="label">2828.HK 年化</div><div class="value">+21.0%</div></div>
+            <div class="stat-card benchmark"><div class="label">2828.HK Sharpe</div><div class="value">0.86</div></div>
+            <div class="stat-card" style="border-left-color:#00ff00"><div class="label">主策略總超額 vs 2828.HK</div><div class="value" style="color:#00ff00">+99.2%</div></div>
+            <div class="stat-card" style="border-left-color:#00ff00"><div class="label">主策略年化 alpha vs 2828.HK</div><div class="value" style="color:#00ff00">+34.9%</div></div>
+        </div>
+
+    <h2>資金曲線</h2>
+    <img src="master_strategy_chart.png" alt="HK master strategy equity curve">
+
+    <div class="grid-2">
+        <div>
+            <h2>中線 Watchlist</h2>
+            <table><thead><tr><th>#</th><th>股票</th><th>Score</th><th>昨收</th><th>MA</th><th>狀態</th></tr></thead><tbody><tr><td>1</td><td>0981</td><td>5.50</td><td>84.90</td><td>64.20</td><td style="color:#00ff00;font-weight:bold;">候選</td></tr><tr><td>2</td><td>2382</td><td>5.30</td><td>75.15</td><td>61.00</td><td style="color:#00ff00;font-weight:bold;">候選</td></tr><tr><td>3</td><td>0688</td><td>5.25</td><td>15.23</td><td>13.51</td><td style="color:#00ff00;font-weight:bold;">候選</td></tr><tr><td>4</td><td>2388</td><td>5.11</td><td>47.70</td><td>43.58</td><td style="color:#00ff00;font-weight:bold;">候選</td></tr><tr><td>5</td><td>9999</td><td>5.10</td><td>194.80</td><td>179.96</td><td style="color:#00ff00;font-weight:bold;">候選</td></tr><tr><td>6</td><td>1109</td><td>4.94</td><td>34.82</td><td>31.94</td><td style="color:#00ff00;font-weight:bold;">候選</td></tr><tr><td>7</td><td>0005</td><td>4.75</td><td>146.50</td><td>135.36</td><td style="color:#00ff00;font-weight:bold;">候選</td></tr><tr><td>8</td><td>0001</td><td>4.61</td><td>67.55</td><td>63.10</td><td style="color:#00ff00;font-weight:bold;">候選</td></tr><tr><td>9</td><td>3993</td><td>4.48</td><td>19.25</td><td>18.79</td><td style="color:#00ff00;font-weight:bold;">候選</td></tr><tr><td>10</td><td>2628</td><td>4.47</td><td>29.08</td><td>28.24</td><td style="color:#00ff00;font-weight:bold;">候選</td></tr><tr><td>11</td><td>0669</td><td>4.20</td><td>115.70</td><td>113.38</td><td style="color:#00ff00;font-weight:bold;">候選</td></tr><tr><td>12</td><td>0728</td><td>4.19</td><td>5.29</td><td>5.11</td><td style="color:#00ff00;font-weight:bold;">候選</td></tr></tbody></table>
+        </div>
+        <div>
+            <h2>日內 Overlay Watchlist</h2>
+            <table><thead><tr><th>股票</th><th>Score</th><th>昨收</th><th>觸發</th><th>狀態</th><th>計畫</th></tr></thead><tbody><tr><td>0981</td><td>5.00</td><td>84.90</td><td>開盤 gap +3.0% ~ +7.5%</td><td style="color:#ffab00;font-weight:bold;">建議 short day trade</td><td>89.36 / TP 82.18 / SL 93.77</td></tr><tr><td>2382</td><td>4.86</td><td>75.15</td><td>開盤 gap +3.0% ~ +7.5%</td><td style="color:#ffab00;font-weight:bold;">建議 short day trade</td><td>79.10 / TP 74.65 / SL 81.83</td></tr><tr><td>9999</td><td>4.69</td><td>194.80</td><td>開盤 gap +3.0% ~ +7.5%</td><td style="color:#ffab00;font-weight:bold;">建議 short day trade</td><td>205.03 / TP 196.58 / SL 210.23</td></tr><tr><td>1109</td><td>4.43</td><td>34.82</td><td>開盤 gap +3.0% ~ +7.5%</td><td style="color:#ffab00;font-weight:bold;">建議 short day trade</td><td>36.65 / TP 34.84 / SL 37.76</td></tr><tr><td>2359</td><td>3.66</td><td>127.70</td><td>-</td><td style="color:#a8b3bd;font-weight:bold;">觀望（低於 MA30）</td><td>-</td></tr><tr><td>9888</td><td>3.60</td><td>127.80</td><td>-</td><td style="color:#a8b3bd;font-weight:bold;">觀望（低於 MA30）</td><td>-</td></tr><tr><td>1299</td><td>3.57</td><td>84.75</td><td>-</td><td style="color:#a8b3bd;font-weight:bold;">觀望（低於 MA30）</td><td>-</td></tr><tr><td>2269</td><td>3.40</td><td>33.80</td><td>-</td><td style="color:#a8b3bd;font-weight:bold;">觀望（低於 MA30）</td><td>-</td></tr><tr><td>1024</td><td>3.17</td><td>45.30</td><td>-</td><td style="color:#a8b3bd;font-weight:bold;">觀望（低於 MA30）</td><td>-</td></tr></tbody></table>
+        </div>
+    </div>
+
+    <div class="grid-2">
+        <div>
+            <h2>近 24 個月</h2>
+            <table><thead><tr><th>月份</th><th>報酬</th></tr></thead><tbody><tr><td>2024-06</td><td style="color:#ff4444;font-weight:bold;">-2.87%</td></tr>
+<tr><td>2024-07</td><td style="color:#ff4444;font-weight:bold;">-2.79%</td></tr>
+<tr><td>2024-08</td><td style="color:#ff4444;font-weight:bold;">-0.87%</td></tr>
+<tr><td>2024-09</td><td style="color:#00ff00;font-weight:bold;">+9.62%</td></tr>
+<tr><td>2024-10</td><td style="color:#00ff00;font-weight:bold;">+8.49%</td></tr>
+<tr><td>2024-11</td><td style="color:#00ff00;font-weight:bold;">+3.58%</td></tr>
+<tr><td>2024-12</td><td style="color:#00ff00;font-weight:bold;">+5.47%</td></tr>
+<tr><td>2025-01</td><td style="color:#ff4444;font-weight:bold;">-0.32%</td></tr>
+<tr><td>2025-02</td><td style="color:#00ff00;font-weight:bold;">+12.96%</td></tr>
+<tr><td>2025-03</td><td style="color:#00ff00;font-weight:bold;">+0.63%</td></tr>
+<tr><td>2025-04</td><td style="color:#ff4444;font-weight:bold;">-5.36%</td></tr>
+<tr><td>2025-05</td><td style="color:#00ff00;font-weight:bold;">+10.74%</td></tr>
+<tr><td>2025-06</td><td style="color:#00ff00;font-weight:bold;">+2.55%</td></tr>
+<tr><td>2025-07</td><td style="color:#00ff00;font-weight:bold;">+12.57%</td></tr>
+<tr><td>2025-08</td><td style="color:#00ff00;font-weight:bold;">+3.24%</td></tr>
+<tr><td>2025-09</td><td style="color:#00ff00;font-weight:bold;">+10.48%</td></tr>
+<tr><td>2025-10</td><td style="color:#00ff00;font-weight:bold;">+2.52%</td></tr>
+<tr><td>2025-11</td><td style="color:#00ff00;font-weight:bold;">+2.22%</td></tr>
+<tr><td>2025-12</td><td style="color:#00ff00;font-weight:bold;">+4.28%</td></tr>
+<tr><td>2026-01</td><td style="color:#00ff00;font-weight:bold;">+10.25%</td></tr>
+<tr><td>2026-02</td><td style="color:#ff4444;font-weight:bold;">-1.51%</td></tr>
+<tr><td>2026-03</td><td style="color:#00ff00;font-weight:bold;">+3.18%</td></tr>
+<tr><td>2026-04</td><td style="color:#00ff00;font-weight:bold;">+0.31%</td></tr>
+<tr><td>2026-05</td><td style="color:#00ff00;font-weight:bold;">+1.35%</td></tr>
+</tbody></table>
+        </div>
+        <div>
+            <h2>近期交易</h2>
+            <table><thead><tr><th>策略</th><th>進場</th><th>出場</th><th>股票</th><th>原因</th><th>報酬</th></tr></thead><tbody><tr><td>DayOverlay</td><td>2026-05-27</td><td>2026-05-27</td><td>9999</td><td>Day Close</td><td style="color:#00ff00;font-weight:bold;">+1.09%</td></tr>
+<tr><td>Swing</td><td>2026-05-18</td><td>2026-05-27</td><td>1109</td><td>🔴 停損</td><td style="color:#ff4444;font-weight:bold;">-10.01%</td></tr>
+<tr><td>Swing</td><td>2026-05-06</td><td>2026-05-26</td><td>0981</td><td>🟢 停利</td><td style="color:#00ff00;font-weight:bold;">+23.95%</td></tr>
+<tr><td>DayOverlay</td><td>2026-05-22</td><td>2026-05-22</td><td>0981</td><td>Day Close</td><td style="color:#ff4444;font-weight:bold;">-4.34%</td></tr>
+<tr><td>Swing</td><td>2026-04-23</td><td>2026-05-22</td><td>0005</td><td>⚪ 時間到期</td><td style="color:#00ff00;font-weight:bold;">+0.98%</td></tr>
+<tr><td>Swing</td><td>2026-04-23</td><td>2026-05-22</td><td>1288</td><td>⚪ 時間到期</td><td style="color:#ff4444;font-weight:bold;">-1.89%</td></tr>
+<tr><td>DayOverlay</td><td>2026-05-22</td><td>2026-05-22</td><td>2382</td><td>Stop Loss</td><td style="color:#ff4444;font-weight:bold;">-3.78%</td></tr>
+<tr><td>DayOverlay</td><td>2026-05-21</td><td>2026-05-21</td><td>0981</td><td>Day Close</td><td style="color:#00ff00;font-weight:bold;">+4.46%</td></tr>
+<tr><td>Swing</td><td>2026-05-14</td><td>2026-05-18</td><td>1109</td><td>🔴 停損</td><td style="color:#ff4444;font-weight:bold;">-9.25%</td></tr>
+<tr><td>Swing</td><td>2026-04-17</td><td>2026-05-18</td><td>1772</td><td>⚪ 時間到期</td><td style="color:#ff4444;font-weight:bold;">-13.55%</td></tr>
+<tr><td>DayOverlay</td><td>2026-05-15</td><td>2026-05-15</td><td>0981</td><td>Day Close</td><td style="color:#00ff00;font-weight:bold;">+3.30%</td></tr>
+<tr><td>Swing</td><td>2026-04-15</td><td>2026-05-14</td><td>9926</td><td>⚪ 時間到期</td><td style="color:#ff4444;font-weight:bold;">-11.82%</td></tr>
+<tr><td>DayOverlay</td><td>2026-05-14</td><td>2026-05-14</td><td>3690</td><td>Take Profit</td><td style="color:#00ff00;font-weight:bold;">+3.55%</td></tr>
+<tr><td>DayOverlay</td><td>2026-05-14</td><td>2026-05-14</td><td>1024</td><td>Take Profit</td><td style="color:#00ff00;font-weight:bold;">+4.79%</td></tr>
+<tr><td>DayOverlay</td><td>2026-05-14</td><td>2026-05-14</td><td>9618</td><td>Day Close</td><td style="color:#00ff00;font-weight:bold;">+1.32%</td></tr>
+<tr><td>DayOverlay</td><td>2026-05-14</td><td>2026-05-14</td><td>9888</td><td>Take Profit</td><td style="color:#00ff00;font-weight:bold;">+4.46%</td></tr>
+<tr><td>DayOverlay</td><td>2026-05-13</td><td>2026-05-13</td><td>9618</td><td>Stop Loss</td><td style="color:#ff4444;font-weight:bold;">-2.25%</td></tr>
+<tr><td>DayOverlay</td><td>2026-05-13</td><td>2026-05-13</td><td>9992</td><td>Take Profit</td><td style="color:#00ff00;font-weight:bold;">+4.89%</td></tr>
+<tr><td>Swing</td><td>2026-05-08</td><td>2026-05-11</td><td>1109</td><td>🟢 停利</td><td style="color:#00ff00;font-weight:bold;">+8.01%</td></tr>
+<tr><td>DayOverlay</td><td>2026-05-11</td><td>2026-05-11</td><td>0981</td><td>Day Close</td><td style="color:#ff4444;font-weight:bold;">-1.68%</td></tr>
+<tr><td>Swing</td><td>2026-04-09</td><td>2026-05-08</td><td>2382</td><td>⚪ 時間到期</td><td style="color:#00ff00;font-weight:bold;">+7.63%</td></tr>
+<tr><td>Swing</td><td>2026-04-09</td><td>2026-05-08</td><td>0175</td><td>⚪ 時間到期</td><td style="color:#ff4444;font-weight:bold;">-4.94%</td></tr>
+<tr><td>DayOverlay</td><td>2026-05-07</td><td>2026-05-07</td><td>9888</td><td>Day Close</td><td style="color:#00ff00;font-weight:bold;">+0.08%</td></tr>
+<tr><td>DayOverlay</td><td>2026-05-07</td><td>2026-05-07</td><td>9988</td><td>Day Close</td><td style="color:#ff4444;font-weight:bold;">-1.43%</td></tr>
+<tr><td>DayOverlay</td><td>2026-05-07</td><td>2026-05-07</td><td>3993</td><td>Day Close</td><td style="color:#00ff00;font-weight:bold;">+0.23%</td></tr>
+<tr><td>Swing</td><td>2026-04-28</td><td>2026-05-06</td><td>0981</td><td>🟢 停利</td><td style="color:#00ff00;font-weight:bold;">+12.66%</td></tr>
+<tr><td>DayOverlay</td><td>2026-05-06</td><td>2026-05-06</td><td>0981</td><td>Stop Loss</td><td style="color:#ff4444;font-weight:bold;">-3.74%</td></tr>
+<tr><td>Swing</td><td>2026-04-01</td><td>2026-05-05</td><td>3988</td><td>⚪ 時間到期</td><td style="color:#00ff00;font-weight:bold;">+0.57%</td></tr>
+<tr><td>DayOverlay</td><td>2026-05-04</td><td>2026-05-04</td><td>9888</td><td>Day Close</td><td style="color:#ff4444;font-weight:bold;">-0.26%</td></tr>
+<tr><td>DayOverlay</td><td>2026-04-30</td><td>2026-04-30</td><td>2628</td><td>Day Close</td><td style="color:#ff4444;font-weight:bold;">-0.85%</td></tr>
+<tr><td>Swing</td><td>2026-04-13</td><td>2026-04-28</td><td>2359</td><td>🟢 停利</td><td style="color:#00ff00;font-weight:bold;">+11.09%</td></tr>
+<tr><td>DayOverlay</td><td>2026-04-27</td><td>2026-04-27</td><td>9888</td><td>Day Close</td><td style="color:#ff4444;font-weight:bold;">-0.35%</td></tr>
+<tr><td>DayOverlay</td><td>2026-04-27</td><td>2026-04-27</td><td>0981</td><td>Stop Loss</td><td style="color:#ff4444;font-weight:bold;">-3.70%</td></tr>
+<tr><td>Swing</td><td>2026-03-23</td><td>2026-04-23</td><td>1211</td><td>⚪ 時間到期</td><td style="color:#ff4444;font-weight:bold;">-1.09%</td></tr>
+<tr><td>Swing</td><td>2026-04-08</td><td>2026-04-23</td><td>2319</td><td>🔴 停損</td><td style="color:#ff4444;font-weight:bold;">-10.28%</td></tr>
+<tr><td>Swing</td><td>2026-03-31</td><td>2026-04-17</td><td>1772</td><td>🟢 停利</td><td style="color:#00ff00;font-weight:bold;">+16.64%</td></tr>
+<tr><td>DayOverlay</td><td>2026-04-15</td><td>2026-04-15</td><td>9618</td><td>Day Close</td><td style="color:#00ff00;font-weight:bold;">+0.89%</td></tr>
+<tr><td>Swing</td><td>2026-03-30</td><td>2026-04-15</td><td>9926</td><td>🟢 停利</td><td style="color:#00ff00;font-weight:bold;">+16.28%</td></tr>
+<tr><td>Swing</td><td>2026-03-11</td><td>2026-04-13</td><td>1919</td><td>⚪ 時間到期</td><td style="color:#ff4444;font-weight:bold;">-0.49%</td></tr>
+<tr><td>Swing</td><td>2026-04-01</td><td>2026-04-09</td><td>0175</td><td>🟢 停利</td><td style="color:#00ff00;font-weight:bold;">+13.65%</td></tr>
+<tr><td>Swing</td><td>2026-03-09</td><td>2026-04-09</td><td>1088</td><td>⚪ 時間到期</td><td style="color:#ff4444;font-weight:bold;">-1.12%</td></tr>
+<tr><td>DayOverlay</td><td>2026-04-08</td><td>2026-04-08</td><td>1299</td><td>Day Close</td><td style="color:#00ff00;font-weight:bold;">+1.57%</td></tr>
+<tr><td>Swing</td><td>2026-03-09</td><td>2026-04-08</td><td>0883</td><td>🔴 停損</td><td style="color:#ff4444;font-weight:bold;">-11.37%</td></tr>
+<tr><td>Swing</td><td>2026-03-04</td><td>2026-04-01</td><td>0857</td><td>⚪ 時間到期</td><td style="color:#00ff00;font-weight:bold;">+0.82%</td></tr>
+<tr><td>Swing</td><td>2026-03-23</td><td>2026-04-01</td><td>0175</td><td>🟢 停利</td><td style="color:#00ff00;font-weight:bold;">+12.13%</td></tr>
+<tr><td>DayOverlay</td><td>2026-04-01</td><td>2026-04-01</td><td>9926</td><td>Day Close</td><td style="color:#ff4444;font-weight:bold;">-3.39%</td></tr>
+<tr><td>Swing</td><td>2026-03-13</td><td>2026-03-31</td><td>1171</td><td>🔴 停損</td><td style="color:#ff4444;font-weight:bold;">-12.45%</td></tr>
+<tr><td>Swing</td><td>2026-03-11</td><td>2026-03-30</td><td>9926</td><td>🟢 停利</td><td style="color:#00ff00;font-weight:bold;">+14.35%</td></tr>
+<tr><td>DayOverlay</td><td>2026-03-26</td><td>2026-03-26</td><td>9926</td><td>Day Close</td><td style="color:#00ff00;font-weight:bold;">+1.01%</td></tr>
+<tr><td>Swing</td><td>2026-02-23</td><td>2026-03-23</td><td>0016</td><td>🔴 停損</td><td style="color:#ff4444;font-weight:bold;">-8.32%</td></tr>
+</tbody></table>
+        </div>
+    </div>
+
+    <div class="disclaimer">
+        <b>方法論：</b>Master v1 將 Benchmark Beater v1.1 作為中線核心，並把 Day Trade v1.1 的當日 PnL 以 overlay scale 疊加。
+        日內 overlay 不持隔夜倉，但放大倍數代表更高日內成交額與 short/融資需求；此回測未納入借券費、融資利息、實際可 short 名單與券商額外限制。
+        本報表僅供研究與技術交流，不構成投資建議。
+    </div>
+</div>
+</body>
+</html>
