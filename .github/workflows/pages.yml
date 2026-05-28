@@ -35,6 +35,8 @@ jobs:
 
       - name: Generate reports
         run: |
+          python ai_report.py --breadth-regime --tp-atr 3.0 --sl-atr 3.0 --hold-days 20 --top-k 12 --rsi-weight 1.5 --corr-filter 0 --dd-pause-pct 0.10 --consec-loss-limit 3 --gap-filter 0 --days 1200
+          python paper_tracker.py
           python master_strategy_report.py --days 1200
           python benchmark_beater_report.py --days 1200
           python day_trade_report.py --days 1200
@@ -44,6 +46,10 @@ jobs:
         run: |
           mkdir -p public
           cp master_strategy_report.html public/index.html
+          cp stock_report.html public/
+          cp backtest_chart.png public/
+          cp paper_trading.html public/
+          cp paper_equity.json public/
           cp master_strategy_report.html public/
           cp master_strategy_chart.png public/
           cp benchmark_beater_report.html public/

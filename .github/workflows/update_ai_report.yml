@@ -33,6 +33,9 @@ on:
         required: false
         default: '0'
 
+permissions:
+  contents: write
+
 # 防止多個 run 同時 push 造成 race condition
 concurrency:
   group: ai-report-main
@@ -93,8 +96,19 @@ jobs:
           git config --global user.email "voidful.stack@gmail.com"
           git config --global user.name "Voidful"
 
-          git add stock_report.html day_trade_report.html day_trade_chart.png paper_trading.html paper_equity.json || true
-          git commit -m "📊 AI Report v8.5 + Paper Trading ($(date -u '+%Y-%m-%d'))" || echo "No changes"
+          git add -u
+          for artifact in stock_report.html day_trade_report.html day_trade_chart.png backtest_chart.png paper_trading.html paper_equity.json; do
+            if [ -e "$artifact" ]; then
+              git add -f "$artifact"
+            fi
+          done
+
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+
+          git commit -m "📊 AI Report v8.5 + Paper Trading ($(date -u '+%Y-%m-%d'))"
 
           # Rebase onto latest remote to prevent non-fast-forward rejection
           git fetch origin main
@@ -152,8 +166,19 @@ jobs:
           git config --global user.email "voidful.stack@gmail.com"
           git config --global user.name "Voidful"
 
-          git add factor_search_results.csv ablation_results.csv backtest_chart.png || true
-          git commit -m "🔄 Quarterly health check ($(date -u '+%Y-%m-%d'))" || echo "No changes"
+          git add -u
+          for artifact in factor_search_results.csv ablation_results.csv backtest_chart.png stock_report.html paper_trading.html paper_equity.json; do
+            if [ -e "$artifact" ]; then
+              git add -f "$artifact"
+            fi
+          done
+
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+
+          git commit -m "🔄 Quarterly health check ($(date -u '+%Y-%m-%d'))"
 
           # Rebase onto latest remote to prevent non-fast-forward rejection
           git fetch origin main
