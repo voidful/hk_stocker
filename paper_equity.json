@@ -9,7 +9,7 @@
       "sl": 19.873,
       "entry_date": "2026-08-17",
       "shares": 846.0,
-      "day_count": 0,
+      "day_count": 1,
       "max_hold_days": 20
     },
     "2359": {
@@ -18,7 +18,7 @@
       "sl": 171.945,
       "entry_date": "2026-08-17",
       "shares": 92.0,
-      "day_count": 0,
+      "day_count": 1,
       "max_hold_days": 20
     },
     "2269": {
@@ -27,7 +27,7 @@
       "sl": 39.422,
       "entry_date": "2026-08-17",
       "shares": 359.0,
-      "day_count": 0,
+      "day_count": 1,
       "max_hold_days": 20
     },
     "6160": {
@@ -36,7 +36,7 @@
       "sl": 187.665,
       "entry_date": "2026-08-17",
       "shares": 69.0,
-      "day_count": 0,
+      "day_count": 1,
       "max_hold_days": 20
     },
     "0669": {
@@ -45,7 +45,7 @@
       "sl": 127.1,
       "entry_date": "2026-08-17",
       "shares": 92.0,
-      "day_count": 0,
+      "day_count": 1,
       "max_hold_days": 20
     },
     "2388": {
@@ -54,7 +54,7 @@
       "sl": 46.8325,
       "entry_date": "2026-08-17",
       "shares": 235.0,
-      "day_count": 0,
+      "day_count": 1,
       "max_hold_days": 20
     }
   },
@@ -462,6 +462,13 @@
     {
       "date": "2026-08-17",
       "equity": 203159.0,
+      "capital": 106138.0,
+      "n_positions": 6,
+      "n_closed_today": 0
+    },
+    {
+      "date": "2026-08-18",
+      "equity": 206349.0,
       "capital": 106138.0,
       "n_positions": 6,
       "n_closed_today": 0
@@ -1428,6 +1435,23 @@
         "1171",
         "9987",
         "1801"
+      ]
+    },
+    {
+      "date": "2026-08-18",
+      "tickers": [
+        "1548",
+        "2359",
+        "2269",
+        "2899",
+        "6160",
+        "1208",
+        "0669",
+        "0268",
+        "2388",
+        "9987",
+        "1801",
+        "0005"
       ]
     }
   ]
