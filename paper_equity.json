@@ -1,7 +1,7 @@
 {
   "start_date": "2026-05-28",
   "initial_capital": 200000,
-  "capital": 122824.38738100843,
+  "capital": 146682.73287804044,
   "positions": {
     "2359": {
       "entry": 196.39999389648438,
@@ -9,16 +9,7 @@
       "sl": 171.945,
       "entry_date": "2026-08-17",
       "shares": 92.0,
-      "day_count": 18,
-      "max_hold_days": 20
-    },
-    "0669": {
-      "entry": 142.4,
-      "tp": 157.7,
-      "sl": 127.1,
-      "entry_date": "2026-08-17",
-      "shares": 92.0,
-      "day_count": 18,
+      "day_count": 19,
       "max_hold_days": 20
     },
     "2388": {
@@ -27,7 +18,7 @@
       "sl": 46.8325,
       "entry_date": "2026-08-17",
       "shares": 235.0,
-      "day_count": 18,
+      "day_count": 19,
       "max_hold_days": 20
     },
     "1548": {
@@ -36,7 +27,7 @@
       "sl": 27.12,
       "entry_date": "2026-08-21",
       "shares": 508.0,
-      "day_count": 14,
+      "day_count": 15,
       "max_hold_days": 20
     },
     "2269": {
@@ -45,16 +36,7 @@
       "sl": 43.0925,
       "entry_date": "2026-08-21",
       "shares": 306.0,
-      "day_count": 14,
-      "max_hold_days": 20
-    },
-    "6160": {
-      "entry": 227.60000610351562,
-      "tp": 251.245,
-      "sl": 204.355,
-      "entry_date": "2026-08-21",
-      "shares": 60.0,
-      "day_count": 14,
+      "day_count": 15,
       "max_hold_days": 20
     }
   },
@@ -106,6 +88,30 @@
       "entry_date": "2026-08-19",
       "exit_date": "2026-08-20",
       "days_held": 1
+    },
+    {
+      "ticker": "0669",
+      "entry": 142.4,
+      "exit": 127.1,
+      "shares": 92.0,
+      "pnl": -1460.0,
+      "pnl_pct": -10.74,
+      "reason": "SL",
+      "entry_date": "2026-08-17",
+      "exit_date": "2026-09-11",
+      "days_held": 19
+    },
+    {
+      "ticker": "6160",
+      "entry": 227.60000610351562,
+      "exit": 203.60000610351562,
+      "shares": 60.0,
+      "pnl": -1495.0,
+      "pnl_pct": -10.54,
+      "reason": "SL",
+      "entry_date": "2026-08-21",
+      "exit_date": "2026-09-11",
+      "days_held": 15
     }
   ],
   "equity_curve": [
@@ -640,6 +646,13 @@
       "capital": 122824.0,
       "n_positions": 6,
       "n_closed_today": 0
+    },
+    {
+      "date": "2026-09-11",
+      "equity": 207164.0,
+      "capital": 146683.0,
+      "n_positions": 4,
+      "n_closed_today": 2
     }
   ],
   "daily_signals": [
@@ -1909,6 +1922,23 @@
         "1177",
         "2600",
         "3968"
+      ]
+    },
+    {
+      "date": "2026-09-11",
+      "tickers": [
+        "3988",
+        "1548",
+        "2382",
+        "0939",
+        "0386",
+        "3968",
+        "1288",
+        "0857",
+        "2628",
+        "1088",
+        "1177",
+        "2388"
       ]
     }
   ]
