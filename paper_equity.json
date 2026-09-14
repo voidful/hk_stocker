@@ -1,33 +1,15 @@
 {
   "start_date": "2026-05-28",
   "initial_capital": 200000,
-  "capital": 146682.73287804044,
+  "capital": 177412.39350707387,
   "positions": {
-    "2359": {
-      "entry": 196.39999389648438,
-      "tp": 222.855,
-      "sl": 171.945,
-      "entry_date": "2026-08-17",
-      "shares": 92.0,
-      "day_count": 19,
-      "max_hold_days": 20
-    },
-    "2388": {
-      "entry": 50.150001525878906,
-      "tp": 53.5675,
-      "sl": 46.8325,
-      "entry_date": "2026-08-17",
-      "shares": 235.0,
-      "day_count": 19,
-      "max_hold_days": 20
-    },
     "1548": {
       "entry": 33.20000076293945,
       "tp": 39.6,
       "sl": 27.12,
       "entry_date": "2026-08-21",
       "shares": 508.0,
-      "day_count": 15,
+      "day_count": 16,
       "max_hold_days": 20
     },
     "2269": {
@@ -36,7 +18,7 @@
       "sl": 43.0925,
       "entry_date": "2026-08-21",
       "shares": 306.0,
-      "day_count": 15,
+      "day_count": 16,
       "max_hold_days": 20
     }
   },
@@ -112,6 +94,30 @@
       "entry_date": "2026-08-21",
       "exit_date": "2026-09-11",
       "days_held": 15
+    },
+    {
+      "ticker": "2359",
+      "entry": 196.39999389648438,
+      "exit": 197.89999389648438,
+      "shares": 92.0,
+      "pnl": 61.0,
+      "pnl_pct": 0.76,
+      "reason": "TIME",
+      "entry_date": "2026-08-17",
+      "exit_date": "2026-09-14",
+      "days_held": 20
+    },
+    {
+      "ticker": "2388",
+      "entry": 50.150001525878906,
+      "exit": 53.5675,
+      "shares": 235.0,
+      "pnl": 751.0,
+      "pnl_pct": 6.81,
+      "reason": "TP",
+      "entry_date": "2026-08-17",
+      "exit_date": "2026-09-14",
+      "days_held": 20
     }
   ],
   "equity_curve": [
@@ -652,6 +658,13 @@
       "equity": 207164.0,
       "capital": 146683.0,
       "n_positions": 4,
+      "n_closed_today": 2
+    },
+    {
+      "date": "2026-09-14",
+      "equity": 209721.0,
+      "capital": 177412.0,
+      "n_positions": 2,
       "n_closed_today": 2
     }
   ],
@@ -1939,6 +1952,23 @@
         "1088",
         "1177",
         "2388"
+      ]
+    },
+    {
+      "date": "2026-09-14",
+      "tickers": [
+        "1548",
+        "3988",
+        "0939",
+        "3968",
+        "1177",
+        "2388",
+        "0386",
+        "2382",
+        "1288",
+        "2269",
+        "1398",
+        "0857"
       ]
     }
   ]
