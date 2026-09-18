@@ -1,27 +1,8 @@
 {
   "start_date": "2026-05-28",
   "initial_capital": 200000,
-  "capital": 177412.39350707387,
-  "positions": {
-    "1548": {
-      "entry": 33.20000076293945,
-      "tp": 39.6,
-      "sl": 27.12,
-      "entry_date": "2026-08-21",
-      "shares": 508.0,
-      "day_count": 19,
-      "max_hold_days": 20
-    },
-    "2269": {
-      "entry": 49.5,
-      "tp": 56.1875,
-      "sl": 43.0925,
-      "entry_date": "2026-08-21",
-      "shares": 306.0,
-      "day_count": 19,
-      "max_hold_days": 20
-    }
-  },
+  "capital": 212860.73370584805,
+  "positions": {},
   "closed_trades": [
     {
       "ticker": "1548",
@@ -117,6 +98,30 @@
       "reason": "TP",
       "entry_date": "2026-08-17",
       "exit_date": "2026-09-14",
+      "days_held": 20
+    },
+    {
+      "ticker": "1548",
+      "entry": 33.20000076293945,
+      "exit": 39.6,
+      "shares": 508.0,
+      "pnl": 3173.0,
+      "pnl_pct": 19.28,
+      "reason": "TP",
+      "entry_date": "2026-08-21",
+      "exit_date": "2026-09-18",
+      "days_held": 20
+    },
+    {
+      "ticker": "2269",
+      "entry": 49.5,
+      "exit": 50.349998474121094,
+      "shares": 306.0,
+      "pnl": 195.0,
+      "pnl_pct": 1.72,
+      "reason": "TIME",
+      "entry_date": "2026-08-21",
+      "exit_date": "2026-09-18",
       "days_held": 20
     }
   ],
@@ -687,6 +692,13 @@
       "capital": 177412.0,
       "n_positions": 2,
       "n_closed_today": 0
+    },
+    {
+      "date": "2026-09-18",
+      "equity": 212861.0,
+      "capital": 212861.0,
+      "n_positions": 0,
+      "n_closed_today": 2
     }
   ],
   "daily_signals": [
@@ -2041,6 +2053,23 @@
         "2628",
         "1288",
         "3692"
+      ]
+    },
+    {
+      "date": "2026-09-18",
+      "tickers": [
+        "1548",
+        "3988",
+        "3328",
+        "2382",
+        "0939",
+        "2388",
+        "3968",
+        "2628",
+        "3692",
+        "1299",
+        "1398",
+        "1288"
       ]
     }
   ]
